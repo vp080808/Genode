@@ -24,12 +24,17 @@
 		e.g.
 			git clone git@github.com:/vp080808/Genode.git	
 	- update changes
-		when creating a new file you have to use
+		- when creating a new file you have to use
 			git add <FILENAME>
-		when you just want to make changes to a file you have to check it out first
+		- when you just want to make changes to a file you have to check it out first
 			git checkout
-		then you change the files, and commit
-			git commit
+		- then you change the files, and commit
+			git commit -a
+		- make your change comments at the top of the file and save & quit (depends on
+		  which editor you use).
+
+		- Now you need to push the changes to the repository
+			git push
 Using Genode on Ubuntu 14.04
 
 1) Install genode :
