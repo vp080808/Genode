@@ -1,3 +1,35 @@
+0) Resolving github issues
+	- create account
+		go to www.github.com and follow the instructions
+	- upload private key
+		in your ~/.ssh/ directory there should be a file ending in .pub
+		copy this file to the ssh keys page in your github account settings
+		
+		if you do not know what I am talking about, read:
+			https://help.github.com/articles/generating-ssh-keys
+		once you are done, be sure to run
+			ssh -T git@github.com
+		(note the username is git -- DON'T change it!)
+		and it should say that you are ok. Otherwise read the above URL.
+	- create project
+		use the github web interface and ask that a README and LICENCE file be generated
+		(this is much faster, as it allows you to simply clone the project from the
+		github repositiry to your computer
+	- clone project
+		(this is the tricky bit, if you don't mess things up here, everything will be fine.
+		 if not, expect to learn a lot about git and github)
+			git clone git@github.com:/<USERNAME>/<PROJECT_NAME>.git	
+		where USERNAME is your github username, and PROJECT_NAME is the name you selected
+		for your github project.
+		e.g.
+			git clone git@github.com:/vp080808/Genode.git	
+	- update changes
+		when creating a new file you have to use
+			git add <FILENAME>
+		when you just want to make changes to a file you have to check it out first
+			git checkout
+		then you change the files, and commit
+			git commit
 Using Genode on Ubuntu 14.04
 
 1) Install genode :
