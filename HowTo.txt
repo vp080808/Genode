@@ -1,0 +1,55 @@
+Using Genode on Ubuntu 14.04
+
+1) Install genode :
+	- Install required (prerequisite) packages:
+
+	 	sudo apt-get install libsdl1.2-dev libsdl1.2debian
+	 	sudo apt-get install byacc flex 
+	 	sudo apt-get install expect 
+	 	sudo apt-get install genisoimage 
+	 	sudo apt-get install qemu -y 
+
+ 	- download last release of Genode from :http://sourceforge.net/projects/genode/files/
+	- extract files in (say) home directory
+ 	- to build genode for the Linux base platform,  execute 
+ 	 	cd <genod_dir>
+ 		 ./tool/create_builddir linux_x86 BUILD_DIR=build.lx 
+ 	- then to prepare it
+  	 	cd  build.lx 
+	 	make 
+
+2) Run the hello_tutorial application
+	-  edit  file  "etc/ build.conf " file and add
+		REPOSITORIES += $(GENODE_DIR)/repos/hello_tutorial
+	- save file and  execute: 
+		 make run/hello
+
+3) How to gdb genode apps (by Sebastian Sumpf <Sebastian.Sumpf <at> genode-labs.com> )
+
+	- GDB cannot be start Genode applications, so you need to connect to an already running
+	  application.  So, to debug your application you have to call 'wait_for_continue' from
+	  within your code.
+
+	- Somewhere in the code add something like:
+
+		extern "C" void wait_for_continue();
+	    	
+		void some_func_in_your_program()
+		{
+      			wait_for_continue();
+  		}
+
+	  This will cause your program to stall in the function above.
+
+	- Compile and run your program
+	- As mentioned above, your program will stop in the `wait_for_continue'  function
+	- Now find out the process id of your program, ('ps -efL | grep Genode')
+	- Start gdb with 'gdb -p <Process ID from ps>' , this will attach gdb to the process
+	- Switch to the Genode output console (where you started core) and hit 'enter', 
+	  this will cause your program to leave the `wait_for_continue' function.
+	- Switch back to GDB, you now may step and set breakpoints (note: Does not work with
+	  all gdb versions), inspect variables, ... .
+
+
+
+
