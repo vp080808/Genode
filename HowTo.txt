@@ -7,6 +7,10 @@
 		
 		if you do not know what I am talking about, read:
 			https://help.github.com/articles/generating-ssh-keys
+		Note that you don't need to install any new software (assuming you have
+		git and ssh). You only need to generate the keys and upload the public key to the
+		github account.
+
 		once you are done, be sure to run
 			ssh -T git@github.com
 		(note the username is git -- DON'T change it!)
