@@ -50,6 +50,7 @@ Using Genode on Ubuntu 14.04
 	- Switch back to GDB, you now may step and set breakpoints (note: Does not work with
 	  all gdb versions), inspect variables, ... .
 
-4) Identifying Genode file descriptors
+4) Project -- merge LWIP and Genode wait
 
-
+	- My goal is to use a unified "select" in the BSD select(2) context, that can
+	  wait on both LWIP sockets and Genode I/O descriptors.
