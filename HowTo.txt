@@ -50,6 +50,6 @@ Using Genode on Ubuntu 14.04
 	- Switch back to GDB, you now may step and set breakpoints (note: Does not work with
 	  all gdb versions), inspect variables, ... .
 
-
+4) Identifying Genode file descriptors
 
 
